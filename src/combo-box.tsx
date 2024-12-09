@@ -4,5 +4,5 @@
 interface ComboBoxProps {}
 
 export const ComboBox = (props: ComboBoxProps) => {
-  return null;
+  return "Add combo box here!";
 };

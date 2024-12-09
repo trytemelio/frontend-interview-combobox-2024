@@ -4,7 +4,28 @@
 
 Create a React component that acts as an accessible combobox (autocomplete) with support for keyboard navigation using arrow keys.
 
+For more information about comboboxes, see the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+
 ## Requirements:
+
+### Instructions
+
+- Fork this repository.
+- Clone the forked repository.
+- Run `npm install` to install the dependencies.
+- Run `npm run dev` to start the development server.
+- Implement the combobox component.
+- All code should be written in TypeScript.
+- All boiler plate code can be modified or deleted, this is just a starting point.
+- Do not use any libraries not included in this repository
+
+Push your changes to your branch and submit the link to the PR in an email. Let us know if there are any changes to how we need to run this project.
 
 ### Core Features
 
@@ -27,8 +48,8 @@ If no matches are found, display a "No results" message.
 ### Accessibility:
 
 - Ensure the component is keyboard-navigable.
-- Add appropriate ARIA attributes (aria-expanded, aria-controls, etc.).
 
 ### Bonus (Optional if time permits):
 
+- Add appropriate ARIA attributes (aria-expanded, aria-controls, etc.).
 - Allow for multiple selection (tags-style).

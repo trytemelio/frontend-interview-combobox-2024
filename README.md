@@ -6,6 +6,12 @@ Create a React component that acts as an accessible combobox (autocomplete) with
 
 For more information about comboboxes, see the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
 
+
+
+https://github.com/user-attachments/assets/cd6ad90e-20ea-42af-817c-4674fc9dc955
+
+
+
 ## Tech Stack
 
 - React

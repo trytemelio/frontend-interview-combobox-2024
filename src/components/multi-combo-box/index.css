@@ -1,0 +1,85 @@
+.multi-combo-box {
+  position: relative;
+  width: 100%;
+}
+
+.multi-combo-box-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 38px;
+  align-items: center;
+}
+
+.multi-combo-box-input-container input {
+  border: none;
+  outline: none;
+  padding: 2px;
+  flex: 1;
+  min-width: 50px;
+}
+
+.multi-combo-box-tag {
+  display: inline-flex;
+  align-items: center;
+  background: #e9ecef;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 14px;
+}
+
+.multi-combo-box-tag-remove {
+  margin-left: 4px;
+  border: none;
+  background: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.multi-combo-box-tag-remove:hover {
+  color: #333;
+}
+
+.multi-combo-box-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.multi-combo-box-option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.multi-combo-box-option:hover:not(.selected),
+.multi-combo-box-option.highlighted:not(.selected) {
+  background: #f0f0f0;
+}
+
+.multi-combo-box-option.selected {
+  background: #007bff;
+  color: white;
+}
+
+.multi-combo-box-no-results {
+  padding: 8px 12px;
+  color: #666;
+}

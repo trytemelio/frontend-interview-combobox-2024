@@ -1,0 +1,95 @@
+.comboBox {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.tagRemove {
+  margin-left: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.listbox {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background: white;
+  z-index: 10;
+  border-radius: 0 0 4px 4px;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0;
+}
+
+.option {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.highlighted {
+  background-color: #eff1f6;
+  color: #333;
+}
+
+.noResults {
+  padding: 8px;
+  color: #999;
+  text-align: center;
+}
+
+.selectedLabel {
+  font-weight: bold;
+  color: #333;
+  background-color: #eff1f6;
+}

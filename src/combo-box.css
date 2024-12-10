@@ -1,0 +1,72 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.combo-search {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 236px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.combo-search-active {
+  border: 1px solid blue;
+}
+
+.combo-search::after {
+  content: " \003E";
+  transform: rotate(90deg);
+  margin-right: 6px;
+}
+
+.combo-input {
+  border: none;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.combo-input:focus {
+  outline: none;
+}
+
+.combo-box {
+  position: relative;
+}
+
+.matching-list {
+  position: absolute;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.list-item {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: lightgray;
+}
+
+.active {
+  background-color: lightgray;
+}
+
+.no-result {
+  text-align: center;
+  padding: 10px 0;
+  color: gray;
+}

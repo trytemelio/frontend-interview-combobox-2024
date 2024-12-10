@@ -21,4 +21,19 @@
   padding: 0.1rem 0.5rem;
   width: fit-content;
   height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.tagRemove {
+  cursor: pointer;
+  color: black;
+  font-size: 0.75rem;
+  border: 1px solid black;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

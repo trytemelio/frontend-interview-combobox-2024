@@ -50,6 +50,7 @@ const App = () => {
   return (
     <div className="center">
       <div className="card">
+        {/* Here added filter... */}
         <ComboBox
           value={selectedOption}
           label="Single Select"
@@ -63,6 +64,7 @@ const App = () => {
         />
 
         <div style={{ display: "flex", gap: "2rem", flexDirection: "column" }}>
+          {/* No Filter, we can do same as first one... */}
           <ComboBox
             value={selectNew}
             label="Multi Select"
@@ -73,7 +75,27 @@ const App = () => {
               setSelectNew(e.target.value);
             }}
           />
-          {mutltselected.length > 0 && <TagsGroup list={mutltselected} />}
+          {mutltselected.length > 0 && (
+            <TagsGroup
+              list={mutltselected}
+              onTagRemove={(tag) => {
+                setMutltselected((prevState) =>
+                  prevState.filter((item: any) => item.value !== tag?.value)
+                );
+                setDropDownData((prevData) => {
+                  const tagExists = prevData.some(
+                    (item) => item.value === tag?.value
+                  );
+
+                  if (!tagExists) {
+                    return [...prevData, tag];
+                  }
+
+                  return prevData;
+                });
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -14,13 +14,9 @@ const Tag: FC<TagProps> = ({ id, name, onRemove }) => {
     <div className={styles.tagName}>
       <span className={styles.tagtext}>{tagName}</span>
       {!!onRemove && (
-        <button
-          className={styles.tagName}
-          onClick={() => onRemove(id)}
-          type="button"
-        >
+        <div className={styles.tagRemove} onClick={() => onRemove(id)}>
           x
-        </button>
+        </div>
       )}
     </div>
   );

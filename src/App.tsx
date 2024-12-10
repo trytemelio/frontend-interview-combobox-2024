@@ -1,12 +1,10 @@
 import "./App.scss";
-import { ComboBox } from "./combo-box";
+import { ComboBoxContainer } from "./containers/combo-box";
 
 const App = () => {
   return (
     <div className="center">
-      <div className="card">
-        <ComboBox />
-      </div>
+      <ComboBoxContainer />
     </div>
   );
 };

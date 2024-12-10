@@ -1,0 +1,35 @@
+.outercombobox {
+  width: 300px;
+}
+.combobox {
+  position: relative;
+  width: 100%;
+}
+
+input {
+  width: 100% !important;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 10;
+  width: 100%;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+
+.option:hover,
+.highlighted {
+  background-color: #b3d4fc;
+}

@@ -8,3 +8,64 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.combo {
+  width: 400px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0 10px;
+  letter-spacing: 1px;
+}
+
+.arrowContainer {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.arrow {
+  font-weight: bolder;
+  transform: scaleX(1.3);
+  margin-top: -45px;
+  margin-right: 20px;
+}
+
+.combo:focus {
+  outline: none !important;
+  border: 2px solid blue;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 2px; 
+  width: 420px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px 0;
+  position: fixed;
+}
+
+.optionList > * {
+  height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.optionList > *:hover {
+  background-color: aliceblue;
+}
+
+.optionList > *:active {
+  background-color: blue;
+}
+
+.activeOption {
+  background-color: blue !important;
+}
+
+.hoverOption {
+  background-color: aliceblue !important;
+}

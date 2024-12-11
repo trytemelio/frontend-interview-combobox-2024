@@ -90,21 +90,32 @@ export const ComboBox = ({
     <div className={styles.outercombobox}>
       {label && <label className="text-red-500"> {label}</label>}
       <div className={styles.combobox}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={value}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          onFocus={() => {
-            setIsMenuOpen(true);
-          }}
-          placeholder={placeholder || "Search"}
-          autoComplete="off"
-          aria-autocomplete="list"
-          aria-controls="dropdown"
-          aria-expanded={isMenuOpen}
-        />
+        <div className={styles.input}>
+          <input
+            ref={inputRef}
+            type="text"
+            value={value}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            onFocus={() => {
+              setIsMenuOpen(true);
+            }}
+            placeholder={placeholder || "Search"}
+            autoComplete="off"
+            aria-autocomplete="list"
+            aria-controls="dropdown"
+            aria-expanded={isMenuOpen}
+          />
+          <button
+            aria-label="Toggle"
+            type="button"
+            className={styles.toggleIcon}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            {isMenuOpen ? "▲" : "▼"}
+          </button>
+        </div>
+
         {isMenuOpen && (
           <div ref={dropdownRef} className={styles.dropdown}>
             {autoCompleteList.length > 0 ? (

@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import ChevronDown from "./icons/chevron-down";
 import { DropdownDataList } from "./data";
 import "./combo-box.scss";
@@ -11,9 +17,10 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
   const [searchText, setSearchText] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [filteredData, setFilteredData] = useState(dropdownData);
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [selectedItems, setSelectedItems] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isReset, setIsReset] = useState(false);
+  const [isMultiselect, setIsMultiselect] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -61,18 +68,33 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
   );
 
   const handleSelectItemBase = useCallback((selectedValue: string | null) => {
-    setSelectedItem(selectedValue);
     setIsReset(true);
-
     if (!selectedValue) {
+      setSelectedItems(null);
       setSearchText("");
     } else {
-      const selectedData = dropdownData.find((v) => v.value === selectedValue);
-      if (selectedData) {
-        setSearchText(selectedData.label);
+      setSelectedItems((value) => {
+        if (isMultiselect) {
+          const parts = value?.split(":") ?? [];
+          parts.push(selectedValue);
+          return parts.join(":");
+        } else {
+          return selectedValue;
+        }
+      });
+
+      if (isMultiselect) {
+        setSearchText("");
+      } else {
+        const selectedData = dropdownData.find((v) =>
+          v.value === selectedValue
+        );
+        if (selectedData) {
+          setSearchText(selectedData.label);
+        }
       }
     }
-  }, [dropdownData]);
+  }, [dropdownData, isMultiselect]);
 
   const handleSelectItem = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -136,9 +158,42 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
     };
   }, [isExpanded, activeIndex, filteredData, handleSelectItemBase]);
 
+  useLayoutEffect(() => {
+    if (!selectedItems) {
+      if (inputRef.current) {
+        inputRef.current.style.paddingLeft = "";
+      }
+    } else {
+      const tagsCont = document.getElementById("tags-container");
+      if (isMultiselect && tagsCont && inputRef.current) {
+        const width = tagsCont.getBoundingClientRect().width;
+        inputRef.current.style.paddingLeft = `${width}px`;
+      }
+    }
+  }, [selectedItems, isMultiselect]);
+
+  const handleMultiselectChange = useCallback(() => {
+    setIsMultiselect((v) => !v);
+    handleSelectItemBase(null);
+  }, [handleSelectItemBase]);
+
   return (
     <div className="container">
-      <div>Options</div>
+      <div className="container-header">
+        <div>Options</div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={isMultiselect}
+              onChange={handleMultiselectChange}
+            />
+            <span>&nbsp;</span>
+            <span>Multiselect: {isMultiselect ? "On" : "Off"}</span>
+          </label>
+        </div>
+      </div>
+
       <div
         className="combobox"
         role="combobox"
@@ -146,6 +201,24 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
         aria-controls="dropdown-menu"
       >
         <div className="combobox-input-container" tabIndex={0}>
+          {(isMultiselect && selectedItems) && (
+            <div id="tags-container" className="tags-container">
+              {selectedItems.split(":").map((val) => {
+                const item = dropdownData.find((item) =>
+                  item.value === val
+                );
+                if (!item) {
+                  return null;
+                } else {
+                  return (
+                    <div className="combobox-item-tag" key={item.value}>
+                      {item.label}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          )}
           <input
             ref={inputRef}
             tabIndex={-1}
@@ -154,7 +227,7 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
             type="text"
             value={searchText}
             onChange={handleTextInput}
-            placeholder="Options"
+            placeholder={(isMultiselect && selectedItems) ? "" : "Options"}
           />
           <button
             tabIndex={-1}
@@ -172,9 +245,10 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
             {filteredData.length
               ? filteredData.map((item, i) => {
                 const isActive = i === activeIndex ? "active" : "";
-                const isSelected = item.value === selectedItem
-                  ? "selected"
-                  : "";
+                const isSelected =
+                  selectedItems?.split(":").includes(item.value)
+                    ? "selected"
+                    : "";
                 return (
                   <button
                     key={item.value}

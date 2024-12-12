@@ -5,6 +5,11 @@
   height: 250px;
 }
 
+.container-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .combobox {
   display: flex;
   flex-direction: column;
@@ -72,4 +77,19 @@
   text-align: center;
   padding: 10px 0;
   color: #a9a9a9;
+}
+
+.tags-container {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  padding: 6px 6px;
+}
+
+.combobox-item-tag {
+  background-color: #f0f0f0;
+  border: 1px solid gainsboro;
+  font-size: 0.9em;
+  padding: 1px 4px;
+  border-radius: 3px;
 }

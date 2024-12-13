@@ -14,6 +14,7 @@ interface ComboBoxProps {
   value?: Option | null;
   defaultValue?: Option | null;
   className?: string;
+  onSearch: (searchText: string) => void;
 }
 
 export const ComboBox = ({
@@ -24,6 +25,7 @@ export const ComboBox = ({
   value: controlledValue,
   defaultValue,
   className = "",
+  onSearch,
 }: ComboBoxProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState(defaultValue?.label || "");
@@ -48,6 +50,7 @@ export const ComboBox = ({
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setInputValue(newValue);
+    onSearch(newValue);
     setIsOpen(true);
 
     if (onChange && newValue === "") {

@@ -10,6 +10,10 @@
   justify-content: space-between;
 }
 
+.multiselect-picker {
+  width: 140px;
+}
+
 .combobox {
   display: flex;
   flex-direction: column;
@@ -87,9 +91,16 @@
 }
 
 .combobox-item-tag {
+  display: flex;
   background-color: #f0f0f0;
   border: 1px solid gainsboro;
   font-size: 0.9em;
-  padding: 1px 4px;
+  padding: 1px;
+  padding-left: 4px;
   border-radius: 3px;
+}
+
+.combobox-item-tag button {
+  margin-top: 1px;
+  padding: 0 3px;
 }

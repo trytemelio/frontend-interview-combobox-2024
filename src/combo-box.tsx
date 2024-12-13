@@ -76,7 +76,9 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
       setSelectedItems((value) => {
         if (isMultiselect) {
           const parts = value?.split(":") ?? [];
-          parts.push(selectedValue);
+          if (!parts.includes(selectedValue)) {
+            parts.push(selectedValue);
+          }
           return parts.join(":");
         } else {
           return selectedValue;
@@ -96,12 +98,32 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
     }
   }, [dropdownData, isMultiselect]);
 
+  const handleUnselectItemBase = useCallback((unselectedValue: string) => {
+    setSelectedItems((value) => {
+      const parts = value?.split(":") ?? [];
+      if (parts.includes(unselectedValue)) {
+        const idx = parts.indexOf(unselectedValue);
+        parts.splice(idx, 1);
+      }
+      const items = parts.join(":");
+      return items.length ? items : null;
+    });
+  }, []);
+
   const handleSelectItem = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       const button = event.currentTarget;
       handleSelectItemBase(button.value);
     },
     [handleSelectItemBase],
+  );
+
+  const handleUnselectItem = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      const button = event.currentTarget;
+      handleUnselectItemBase(button.value);
+    },
+    [handleUnselectItemBase],
   );
 
   useEffect(() => {
@@ -181,15 +203,18 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
     <div className="container">
       <div className="container-header">
         <div>Options</div>
-        <div>
+        <div className="multiselect-picker">
           <label>
             <input
               type="checkbox"
+              tabIndex={-1}
               checked={isMultiselect}
               onChange={handleMultiselectChange}
             />
             <span>&nbsp;</span>
-            <span>Multiselect: {isMultiselect ? "On" : "Off"}</span>
+            <span>
+              Multiselect: <strong>{isMultiselect ? "On" : "Off"}</strong>
+            </span>
           </label>
         </div>
       </div>
@@ -212,7 +237,10 @@ export const ComboBox = ({ dropdownData }: ComboBoxProps) => {
                 } else {
                   return (
                     <div className="combobox-item-tag" key={item.value}>
-                      {item.label}
+                      <span>{item.label}</span>
+                      <button value={item.value} onClick={handleUnselectItem}>
+                        &#10006;
+                      </button>
                     </div>
                   );
                 }

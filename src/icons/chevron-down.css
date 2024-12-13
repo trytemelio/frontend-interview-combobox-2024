@@ -1,0 +1,8 @@
+.bi-chevron-down path {
+  stroke: black;
+  stroke-width: 1;
+}
+
+.bi-chevron-down {
+  transform: scale(0.8);
+}

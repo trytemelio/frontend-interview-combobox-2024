@@ -18,3 +18,72 @@
   width: 700px;
   border-radius: 1.25rem;
 }
+.combo-box-container {
+  position: relative;
+  width: 300px;
+  margin: 20px;
+}
+
+.combo-box-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.combo-box-wrapper {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+}
+
+.combo-box-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+
+ 
+}
+
+.combo-box-listbox {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 4px 0;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.combo-box-option {
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+
+  &.highlighted {
+    background-color: #e9ecef;
+  }
+}
+
+.combo-box-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 12px;
+}

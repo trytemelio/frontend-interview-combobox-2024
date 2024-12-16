@@ -1,0 +1,56 @@
+.combo-box {
+  position: relative;
+  width: 300px;
+}
+
+.combo-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.combo-box input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.combo-box .combo-box-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 4px 0;
+  padding: 0;
+  list-style: none;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.combo-box .combo-box-option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.combo-box .combo-box-option:hover:not(.selected),
+.combo-box .combo-box-option.highlighted:not(.selected) {
+  background-color: #f0f0f0;
+}
+
+.combo-box .combo-box-option.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.combo-box .combo-box-no-results {
+  padding: 8px 12px;
+  color: #666;
+}

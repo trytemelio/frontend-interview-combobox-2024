@@ -11,9 +11,11 @@ const App = () => {
   };
   return (
     <>
-      <div className="app">
-        <ComboBox options={dropdownData} labelPlaceholder="Options" onSelect={handleSelect} />
-        {selectedOption && <p> {selectedOption}</p>}
+      <div className="center">
+        <div className="card">
+          <ComboBox options={dropdownData} labelPlaceholder="Options" onSelect={handleSelect} />
+          {selectedOption && <p> {selectedOption}</p>}
+        </div>
       </div>
     </>
   );

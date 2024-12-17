@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/cd6ad90e-20ea-42af-817c-4674fc9dc955
   Something went wrong
 </video>
 
-[Click here to watch the video link](https://youtu.be/UyfpaM1PtJ4)
+[Click here to watch the video](https://youtu.be/UyfpaM1PtJ4)
 
 
 
